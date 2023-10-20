@@ -1,0 +1,39 @@
+<div class="flex h-screen">
+  <div
+    class="w-1/5 bg-white overflow-y-auto"
+    (scroll)="onScroll()"
+    ngModel
+    #sidebarContainer
+  >
+    <div class="flex items-center justify-between">
+      <div class="flex my-2 items-center">
+        <span
+          type="button"
+          (click)="logout()"
+          class="w-30 h-14 mr-5 flex items-center justify-center px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
+        >
+          <svg
+            class="w-5 h-5 rtl:rotate-180"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+            />
+          </svg>
+          <span class="text-red-500 text-bold">Выйти</span>
+        </span>
+      </div>
+      <div class="mr-5">Пользователь: <span class="text-bold">{{authName}}</span></div>
+    </div>
+    <app-product-history [isEndScroll]="isEndScroll"></app-product-history>
+  </div>
+  <div class="flex-1 bg-white overflow-y-auto w-4/5">
+    <app-content></app-content>
+  </div>
+</div>

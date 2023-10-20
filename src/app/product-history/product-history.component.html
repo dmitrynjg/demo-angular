@@ -1,0 +1,31 @@
+<div class="md:order-2 relative before:absolute before:inset-0 before:z-10 before:border before:border-gray-200 before:transition before:hover:border-2 before:hover:border-blue-600 before:hover:shadow-lg after:absolute after:inset-x-0.5 after:bottom-0.5 after:z-10 after:w-[calc(100%-4px)] after:h-24 after:bg-gradient-to-t after:from-white after:via-white/[.9] after:to-white/[.4]">
+  <div class="relative overflow-hidden w-full h-full">
+    <div class="p-6 flex bg-white flex-col justify-between md:min-h-[480px] text-center dark:border-gray-700">
+      <div>
+        <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200">
+          История изменение продуктов
+        </h3>
+      </div>
+      <div *ngIf="productsHistory.length === 0" class="my-10 text-bold text-sm">История изменений пуста</div>
+      <div class="mt-8">
+        <!-- Timeline -->
+        <ul class="flex flex-col text-left space-y-1.5">
+          <li class="relative flex gap-x-4 pb-7 overflow-hidden" *ngFor="let product of productsHistory">
+            <div class="mt-0.5 relative h-full">
+              <div class="absolute top-7 bottom-0 left-2.5 w-px h-96 -ml-px border-r border-dashed border-gray-300 dark:border-gray-600"></div>
+              <svg class="w-5 h-5 text-gray-800 dark:text-gray-200" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.8462 12.3462C16.8462 15.0226 14.6765 17.1923 12 17.1923C9.32354 17.1923 7.15385 15.0226 7.15385 12.3462M16.8462 12.3462C16.8462 9.6697 14.6765 7.5 12 7.5C9.32354 7.5 7.15385 9.6697 7.15385 12.3462M16.8462 12.3462H22.5M7.15385 12.3462H1.5" stroke="currentColor" stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <div class="py-3 px-7 text-xs font-medium text-gray-600 bg-white border border-gray-200 shadow-sm dark:text-gray-400 dark:bg-slate-900 dark:border-gray-700">
+              <div><span class="font-semibold text-gray-800 dark:text-gray-200">Пользователь {{product.userLogin}}</span> {{product.message}}</div>
+              <div>{{product.createdAt}}</div>
+            </div>
+          </li>
+        </ul>
+        <div *ngIf="isLoading">Загрузка...</div>
+        <!-- End Timeline -->
+      </div>
+    </div>
+  </div>
+</div>

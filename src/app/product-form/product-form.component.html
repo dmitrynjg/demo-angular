@@ -1,0 +1,101 @@
+<div class="flex my-2 items-center">
+  <a href="/"
+    type="button"
+    class="w-30 h-14 mr-5 flex items-center justify-center px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
+  >
+    <svg
+      class="w-5 h-5 rtl:rotate-180"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+      />
+    </svg>
+    <span>Назад</span>
+  </a>
+  <h2
+    class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white my-5"
+  >
+    {{ id ? title : "Создание товара" }}
+  </h2>
+</div>
+<div class="w-full">
+  <form
+    [formGroup]="this.form"
+    (ngSubmit)="onSubmit()"
+    class="space-y-4 md:space-y-6 w-3/5"
+  >
+    <div class="form-group">
+      <label
+        for="name"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Название</label
+      >
+      <input
+        type="text"
+        formControlName="name"
+        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        [ngClass]="{ 'is-invalid': f.name.errors }"
+      />
+      <div *ngIf="f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Название продукта обязательная</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label
+        for="password"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Цена</label
+      >
+      <input
+        type="number"
+        formControlName="price"
+        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        [ngClass]="{ 'is-invalid': f.price.errors }"
+      />
+      <div *ngIf="f.price.errors" class="invalid-feedback">
+        <div *ngIf="f.price.errors.required" class="text-red">
+          Цена продукта обязательная
+        </div>
+        <div *ngIf="f.price.errors.min">Цена не может быть ниже 0</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label
+        for="password"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Дата создания</label
+      >
+      <input
+        disabled="true"
+        class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="{{ createdAt }}"
+      />
+    </div>
+    <div class="form-group">
+      <label
+        for="password"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Дата последнего изменения</label
+      >
+      <input
+        disabled="true"
+        class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="{{ updatedAt }}"
+      />
+    </div>
+    <div class="form-group">
+      <button
+        class="bg-blue-400 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+      >
+        Сохранить
+      </button>
+    </div>
+  </form>
+</div>

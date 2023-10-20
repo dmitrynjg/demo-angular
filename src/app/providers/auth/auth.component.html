@@ -1,0 +1,5 @@
+<div *ngIf="userService.isAuth; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock><ng-content></ng-content></ng-template>
+<ng-template #elseBlock>
+  <app-register-signin></app-register-signin>
+</ng-template>

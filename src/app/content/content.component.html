@@ -1,0 +1,17 @@
+<div class="mx-2">
+  <div *ngIf="content === 'table'">
+    <div class="my-5">
+      <a
+        href="/product#form"
+        class="bg-blue-400 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+      >
+        Создать товар
+      </a>
+    </div>
+    <app-product-table></app-product-table>
+  </div>
+  <app-product-form
+    *ngIf="content === 'form'"
+    queries="{{ queries }}"
+  ></app-product-form>
+</div>

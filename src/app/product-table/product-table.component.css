@@ -1,0 +1,13 @@
+.asc, .desc {
+  position: relative;
+}
+.asc::after {
+  position: absolute;
+  left: 0;
+  content: 'D',
+}
+.desc::after {
+  left: 0;
+  position: absolute;
+  content: 'D',
+}
